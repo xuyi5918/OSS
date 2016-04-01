@@ -60,11 +60,17 @@
 			return $this;
 		}
 
-
-		public function renameFiles($key=null){
-			if(is_null($key)){
-
+		/**
+		 * 重命名
+		 * @param null $key
+		 * @param null $newName
+		 */
+		public function renameFiles($key=null,$newName=null){
+			if(!is_null($key) && !is_null($newName)){
+				$info=$this->manage->rename($this->bucket,$key,$newName);
+				return is_object($info)?false:true;
 			}
+			return false;
 		}
 
 		/**
@@ -183,7 +189,7 @@ $oss->accessKey='u-yTGzEYucRgOyUhfykJYeTQmya2ENUucR3rXwyk';
 $oss->secretKey='gLDFqQOR-lyT4EqbfiAqpuFxiZkuojv5315UZauO';
 $oss->bucket='ipensoft';
 $oss->run();
-$a=$oss->select('ipensoft')->uploadFile('index.html','E:\index.html');
+$a=$oss->select('ipensoft')->renameFiles('index.html',"indexaaaa.htm");
 
 var_dump($a);
 
