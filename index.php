@@ -8,7 +8,9 @@
 	class oss {
 
 		public $accessKey	=	null;
+
 		public $secretKey	=	null;
+
 		public $bucket		=	null;
 
 		public $Auth		=	null;		#保存权限类对象
@@ -19,7 +21,11 @@
 
 		public $manage		=	null;
 
-
+		/**
+		 * 加载配置项执行运行
+		 *
+		 * @return bool
+		 */
 		public function run(){
 
 			try{
@@ -60,6 +66,16 @@
 			return $this;
 		}
 
+		/**
+		 * 复制文件到其他 bucket
+		 * @param null $bucket
+		 * @param null $key
+		 * @param null $tobucket
+		 * @param null $tokey
+		 */
+		public function copyFiles($bucket=null,$key=null,$tobucket=null,$tokey=null){
+			$this->manage->copy();
+		}
 		/**
 		 * 重命名
 		 * @param null $key
