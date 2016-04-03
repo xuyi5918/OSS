@@ -74,7 +74,12 @@
 		 * @param null $tokey
 		 */
 		public function copyFiles($bucket=null,$key=null,$tobucket=null,$tokey=null){
-			$this->manage->copy();
+			if(is_null($this->manage->copy($bucket,$key,$tobucket,$tokey))){
+				return true;
+			}else{
+				return false;
+				
+			}
 		}
 		/**
 		 * 重命名
